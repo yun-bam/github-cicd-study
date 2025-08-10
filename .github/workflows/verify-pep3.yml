@@ -18,5 +18,8 @@ jobs:
         run: flake8 .
       - name: Dooray msg on failure
         if: failure()
-        run: |
-          curl -H "Content-Type: application/json" -X POST -d '{"botName": "MyBot", "botIconImage": "https://static.dooray.com/static_images/dooray-bot.png", "text":"Dooray!"}' "${HOOK_URL}"
+        uses: ./.github/actions/dooray/
+        with:
+          botName: 'VerifierBot'
+          botIconImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNmfE2CWjH0wRFNRareaLCVps6hx8nqMG1Pw&s'
+          text: 'Wrong content detected!'
