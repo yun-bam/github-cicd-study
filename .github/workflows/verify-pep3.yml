@@ -6,14 +6,11 @@ on:
 
 jobs:
   verify:
-    name: verify python indent
+    name: Verify Python Indent
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: peter-evans/autopep8@v2
-        id: autopep8
-        with:
-          args: --recursive --in-place --aggressive --aggressive .
-      - name: alert failure
-        if: steps.autopep8.outputs.exit-code == 2
-        run: exit 1
+      - name: Install flake8
+        run: pip install flake8
+      - name: Run flake8
+        run: flake8 .
