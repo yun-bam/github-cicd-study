@@ -20,5 +20,5 @@ runs:
   using: composite
   steps:
     - run: |
-        curl -H "Content-Type: application/json" -X POST -d'{"botName": ${{ inputs.botName}}, "botIconImage": ${{ inputs.botIconImage }}, "text": ${{ inputs.text }}}' ${{ inputs.url }}
+        curl -H "Content-Type: application/json" -X POST -d'{"botName": "${{ inputs.botName}}", "botIconImage": "${{ inputs.botIconImage }}", "text": "${{ inputs.text }}"}' ${{ inputs.url }}
       shell: bash
