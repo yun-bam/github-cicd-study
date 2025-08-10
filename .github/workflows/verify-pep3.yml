@@ -8,9 +8,14 @@ jobs:
   verify:
     name: Verify Python Indent
     runs-on: ubuntu-latest
+    env:
+      HOOK_URL: https://nhnent.dooray.com/services/1387695619080878080/2697784993322248692/z0jwkVQFRtWYghBmuxi1fQ
     steps:
       - uses: actions/checkout@v4
       - name: Install flake8
         run: pip install flake8
       - name: Run flake8
         run: flake8 .
+      - name: Dooray msg on failure
+        if: failure()
+        run: curl -H "Content-Type: application/json" -X POST -d '{"botName": "MyBot", "botIconImage": "https://static.dooray.com/static_images/dooray-bot.png", "text":"Dooray!"}' "${HOOK_URL}"
