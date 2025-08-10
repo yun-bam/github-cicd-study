@@ -1,4 +1,5 @@
 import random
 
 random_int = random.randint(1, 10)
-    print(random_int)
+# wrong indent
+  print(random_int)
