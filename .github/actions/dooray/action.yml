@@ -10,6 +10,9 @@ inputs:
     default: 'https://static.dooray.com/static_images/dooray-bot.png'
     required: false
     description: 메세지 봇 사진
+  url:
+    required: true
+    description: Hook 주소
   text:
     required: true
     description: 메세지 내용
@@ -17,5 +20,5 @@ runs:
   using: composite
   steps:
     - run: |
-        curl -H "Content-Type: application/json" -X POST -d'{"botName": ${{ inputs.botName}}, "botIconImage": ${{ inputs.botIconImage }}, "text": ${{ inputs.text }}}'
+        curl -H "Content-Type: application/json" -X POST -d'{"botName": ${{ inputs.botName}}, "botIconImage": ${{ inputs.botIconImage }}, "text": ${{ inputs.text }}}' ${{ inputs.url }}
       shell: bash

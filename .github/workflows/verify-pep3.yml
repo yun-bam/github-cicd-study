@@ -8,8 +8,6 @@ jobs:
   verify:
     name: Verify Python Indent
     runs-on: ubuntu-latest
-    env:
-      HOOK_URL: https://nhnent.dooray.com/services/1387695619080878080/2697784993322248692/z0jwkVQFRtWYghBmuxi1fQ
     steps:
       - uses: actions/checkout@v4
       - name: Install flake8
@@ -22,4 +20,6 @@ jobs:
         with:
           botName: 'VerifierBot'
           botIconImage: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNmfE2CWjH0wRFNRareaLCVps6hx8nqMG1Pw&s'
+          url: 'https://nhnent.dooray.com/services/1387695619080878080/2697784993322248692/z0jwkVQFRtWYghBmuxi1fQ'
           text: 'Wrong content detected!'
+
