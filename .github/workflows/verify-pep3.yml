@@ -1,0 +1,19 @@
+name: Verify Pep8
+on:
+  pull_request:
+    branches: [main]
+    paths: ['python/*.py']
+
+jobs:
+  verify:
+    name: verify python indent
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: peter-evans/autopep8@v2
+        id: autopep8
+        with:
+          args: --recursive --in-place --aggressive --aggressive .
+      - name: alert failure
+        if: steps.autopep8.outputs.exit-code == 2
+        run: exit 1
