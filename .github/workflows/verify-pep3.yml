@@ -18,4 +18,5 @@ jobs:
         run: flake8 .
       - name: Dooray msg on failure
         if: failure()
-        run: curl -H "Content-Type: application/json" -X POST -d '{"botName": "MyBot", "botIconImage": "https://static.dooray.com/static_images/dooray-bot.png", "text":"Dooray!"}' "${HOOK_URL}"
+        run: |
+          curl -H "Content-Type: application/json" -X POST -d '{"botName": "MyBot", "botIconImage": "https://static.dooray.com/static_images/dooray-bot.png", "text":"Dooray!"}' "${HOOK_URL}"
