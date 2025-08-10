@@ -1,0 +1,21 @@
+name: Dooray
+description: |
+  두레이 메세지를 전송할 수 있는 로컬 액션.
+inputs:
+  botName:
+    default: 'MyBot'
+    required: false
+    description: 메세지 봇 이름
+  botIconImage:
+    default: 'https://static.dooray.com/static_images/dooray-bot.png'
+    required: false
+    description: 메세지 봇 사진
+  text:
+    required: true
+    description: 메세지 내용
+runs:
+  using: composite
+  steps:
+    - run: |
+        curl -H "Content-Type: application/json" -X POST -d'{"botName": ${{ inputs.botName}}, "botIconImage": ${{ inputs.botIconImage" }}, "text": ${{ inputs.text }}}'
+      shell: bash
